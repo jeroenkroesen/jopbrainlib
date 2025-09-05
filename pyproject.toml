@@ -1,7 +1,7 @@
 [project]
 name = "jopbrainlib"
 version = "0.1.0a1"
-description = "Add your description here"
+description = "Automating a second brain in Joplin"
 readme = "README.md"
 authors = [
     { name = "Jeroen Kroesen", email = "jeroen@kroesen.nu" }
