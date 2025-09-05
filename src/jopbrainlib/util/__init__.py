@@ -1,8 +1,9 @@
 """Utilities to support Artumis on Joplin
 """
 
-from . import datetimes
+from . import datetimes, templating
 
 __all__ = [
-    'datetimes'
+    'datetimes',
+    'templating'
 ]
