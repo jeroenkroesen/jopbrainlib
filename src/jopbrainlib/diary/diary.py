@@ -58,7 +58,7 @@ def create_diary_day(
     tags.append(f"time.day_{data['day_number']}") # Day. Example: time.day_16
     # Setup data for creating the note, rendering templates
     note_data = {
-        'title': title_template.render(**data),
+        'title': title_template.render(**data).strip(),
         'body': body_template.render(**data),
         'parent_id': parent_id
     }
