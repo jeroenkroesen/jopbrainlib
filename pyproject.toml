@@ -1,6 +1,6 @@
 [project]
 name = "jopbrainlib"
-version = "0.1.0a1"
+version = "0.1.0a2"
 description = "Automating a second brain in Joplin"
 readme = "README.md"
 authors = [
