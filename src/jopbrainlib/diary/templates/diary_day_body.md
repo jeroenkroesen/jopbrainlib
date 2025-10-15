@@ -16,7 +16,7 @@ listview:
 
 
 <!-- note-overview-plugin
-search: type:note -tag:dedimo -tag:communication* -tag:.event.appointment -tag:event.birthday -tag:media tag:time.{{ year }} tag:time.{{ month_name }} tag:time.day_{{ day_number }}
+search: type:note -tag:dedimo -tag:no_embed_diary -tag:communication* -tag:.event.appointment -tag:event.birthday -tag:media tag:time.{{ year }} tag:time.{{ month_name }} tag:time.day_{{ day_number }}
 fields: body
 listview:
   text: "{% raw %}{{body}}{% endraw %}"
@@ -41,7 +41,7 @@ details:
 <!--endoverview-->
 
 <!-- note-overview-plugin
-search: type:todo iscompleted:0 -tag:dedimo tag:todo.doing tag:time.{{ year }} tag:time.{{ month_name }} tag:time.day_{{ day_number }}
+search: type:todo iscompleted:0 -tag:dedimo tag:time.{{ year }} tag:time.{{ month_name }} tag:time.day_{{ day_number }}
 fields: title
 alias: title AS Todo
 sort: title ASC
