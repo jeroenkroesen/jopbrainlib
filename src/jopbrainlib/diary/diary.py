@@ -25,15 +25,47 @@ def create_diary_day(
 
     To implement later: Deal with multiple entities coming back from search
     results.
+
+    Parameters
+    ----------
+    joplin : joppylib.JoplinClient
+        An authenticated instance of joppylib.JoplinClient
+    date : pendulum.DateTime
+        The date of the day you want to create a diary not for.
+    notebook_title : str
+        The title of the notebook you want to create the diary note
+        in. The notebook title MUST BE UNIQUE!! If you have multiple 
+        notebooks with the same title, create_diary_day() will fail.
+    template_folder : str (optional, default: None)
+        The str path to the template folder. May contain `~`, `..` and `.`.
+        `~` will be resolved to you homefolder and symbolic links will be 
+        followed.
+    body_template_file : str (default diary_day_body.md)
+        Filename of the template for the body of the diary notes. Must end in 
+        `.md` and be valid markdown and liquid.
+    title_template_file : str (default diary_day_title.md)
+        Filename of the template for the title of the diary notes. Must end in 
+        `.md` and be valid markdown and liquid.
+
+
+    Returns
+    -------
+    id : str
+        The Joplin note id of the created note
+
+
+    Raises
+    ------
+    FileNotFoundError : if template_folder does not exist in the filesystem.
     """
     # Liquid instantiation
     if not template_folder: # Set default template path
         template_path = Path(__file__).parent.joinpath('templates')
     else:
-        template_path = Path(template_folder).resolve()
+        template_path = Path(template_folder).expanduser().resolve()
     if not template_path.exists():
         msg = f'template dir {template_path} does not exist.'
-        raise Exception(msg)
+        raise FileNotFoundError(msg)
     liquid_env = get_liquid_env(template_path.__str__())
     # Get the id for the notebook diary note should be saved in
     nb_result = joplin.folder.search(notebook_title, ['id'])
